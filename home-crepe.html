@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOME CREPE · Food Truck de Crepe</title>
+<meta name="description" content="HOME CREPE — food truck de crepe e bancake feito na hora. Doces, salgados e bebidas. Wi-Fi liberado pra você. Siga no Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ig1:#feda75; --ig2:#fa7e1e; --ig3:#d62976; --ig4:#962fbf; --ig5:#4f5bd5;
+    --grad:linear-gradient(45deg,var(--ig1),var(--ig2),var(--ig3),var(--ig4),var(--ig5));
+    --bg:#ffffff; --bg2:#fafafa; --line:#dbdbdb; --text:#262626; --muted:#8e8e8e;
+    --blue:#0095f6; --max:935px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+
+  /* TOPBAR */
+  .topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);height:60px;display:flex;align-items:center}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Segoe UI",Arial,sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.02em}
+  .brand .dot{width:26px;height:26px;border-radius:8px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:15px}
+  .brand span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .tb-icons{display:flex;gap:20px;font-size:1.35rem;color:#262626}
+
+  /* HEADER / PROFILE */
+  .profile{padding:34px 0 20px}
+  .phead{display:flex;gap:34px;align-items:center}
+  .avatar{flex:0 0 auto;width:150px;height:150px;border-radius:50%;padding:4px;background:var(--grad)}
+  .avatar .inner{width:100%;height:100%;border-radius:50%;background:#fff;padding:3px}
+  .avatar .inner div{width:100%;height:100%;border-radius:50%;background:
+     radial-gradient(120% 100% at 30% 10%,#fff5e6,#ffd9a8);
+     display:grid;place-items:center;font-size:3.6rem;border:1px solid var(--line)}
+  .pinfo{flex:1;min-width:0}
+  .pinfo .row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .pinfo .u{font-size:1.55rem;font-weight:400}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-size:.88rem;font-weight:600;padding:8px 18px;border-radius:9px;cursor:pointer;border:none;transition:.15s}
+  .btn.primary{background:var(--blue);color:#fff}
+  .btn.primary:hover{background:#1877f2}
+  .btn.light{background:#efefef;color:#262626}
+  .btn.light:hover{background:#e4e4e4}
+  .btn.grad{background:var(--grad);color:#fff}
+  .stats{display:flex;gap:38px;margin:20px 0 0;font-size:.95rem}
+  .stats b{font-weight:600}
+  .bio{margin-top:20px;font-size:.94rem;line-height:1.5}
+  .bio .name{font-weight:600}
+  .bio .cat{color:var(--muted)}
+  .bio a.link{color:#00376b;font-weight:600}
+  .bio .tags{margin-top:6px}
+
+  /* HIGHLIGHTS */
+  .highlights{display:flex;gap:26px;padding:22px 0;overflow-x:auto;border-top:1px solid var(--line);margin-top:24px}
+  .hl{flex:0 0 auto;text-align:center;width:86px;cursor:pointer}
+  .hl .ring{width:78px;height:78px;border-radius:50%;padding:3px;background:var(--grad);margin:0 auto}
+  .hl .ring .in{width:100%;height:100%;border-radius:50%;background:#fff;padding:2px}
+  .hl .ring .in div{width:100%;height:100%;border-radius:50%;background:#f4f4f4;display:grid;place-items:center;font-size:1.6rem}
+  .hl span{display:block;font-size:.75rem;margin-top:7px;color:#262626;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* TABS */
+  .tabs{display:flex;justify-content:center;gap:48px;border-top:1px solid var(--line);margin-top:6px}
+  .tab{display:flex;align-items:center;gap:7px;padding:16px 2px;font-size:.78rem;font-weight:600;letter-spacing:.08em;color:var(--muted);border-top:1px solid transparent;margin-top:-1px;text-transform:uppercase}
+  .tab.on{color:var(--text);border-top-color:var(--text)}
+
+  /* GRID */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:4px}
+  .grid a{position:relative;aspect-ratio:1;overflow:hidden;background:#f0f0f0}
+  .grid img{width:100%;height:100%;object-fit:cover;transition:.3s}
+  .grid a:hover img{filter:brightness(.82)}
+  .grid .ov{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:700;font-size:1rem;opacity:0;background:rgba(0,0,0,.28)}
+  .grid a:hover .ov{opacity:1}
+
+  /* SECTION base */
+  .sec{padding:52px 16px;max-width:935px;margin:0 auto}
+  .sec-h{text-align:center;margin-bottom:30px}
+  .sec-h h2{font-size:1.55rem;font-weight:700}
+  .sec-h p{color:var(--muted);margin-top:8px;font-size:.95rem}
+
+  /* WIFI */
+  .wifi{background:var(--grad);border-radius:20px;padding:3px;max-width:560px;margin:0 auto}
+  .wifi .in{background:#111;border-radius:17px;padding:30px;color:#fff;text-align:center}
+  .wifi .ic{font-size:2.2rem}
+  .wifi h3{font-size:1.15rem;margin:8px 0 20px;font-weight:600;letter-spacing:.02em}
+  .wifi .rows{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .wifi .box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:13px;padding:16px}
+  .wifi .box small{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin-bottom:6px}
+  .wifi .box b{font-size:1.12rem;letter-spacing:.03em;font-family:ui-monospace,Menlo,Consolas,monospace}
+  .wifi .free{margin-top:16px;font-size:.82rem;opacity:.75}
+
+  /* MENU */
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:34px}
+  .menu-col h4{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ig3);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+  .item{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed #ececec}
+  .item b{font-weight:600;font-size:.95rem}
+  .item i{font-style:normal;font-size:.8rem;color:var(--muted);display:block;margin-top:2px}
+  .item .p{font-weight:700;color:var(--text);white-space:nowrap}
+  .item .p small{display:block;font-weight:400;font-size:.68rem;color:var(--muted);text-align:right}
+
+  /* VIDEO */
+  .video-box{max-width:420px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000}
+  .video-box figcaption{padding:14px;font-size:.85rem;color:var(--text);background:#fff}
+  .ph-video{background:linear-gradient(135deg,#262626,#000);color:#fff;padding:46px 26px;text-align:center}
+  .ph-video .ph-ic{width:64px;height:64px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-size:1.6rem;margin:0 auto 16px}
+  .ph-video p{font-size:.92rem;opacity:.85;margin-bottom:18px}
+
+  /* QR */
+  .qr-card{display:flex;gap:30px;align-items:center;justify-content:center;flex-wrap:wrap;background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:30px}
+  .qr-card img{width:180px;height:180px;border-radius:12px;background:#fff;padding:10px;border:1px solid var(--line)}
+  .qr-txt{max-width:280px}
+  .qr-txt h3{font-size:1.25rem;margin-bottom:8px}
+  .qr-txt p{color:var(--muted);font-size:.9rem;margin-bottom:6px}
+  .qr-txt .handle{font-weight:700;color:var(--text);font-size:1.05rem}
+
+  /* INFO */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .info{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;gap:14px}
+  .info .ic{font-size:1.4rem}
+  .info b{display:block;margin-bottom:4px}
+  .info p{color:var(--muted);font-size:.9rem}
+
+  .cta{text-align:center;padding:20px 16px 60px}
+  .cta .btn{padding:13px 30px;font-size:1rem}
+
+  footer{border-top:1px solid var(--line);padding:26px 16px;text-align:center;color:var(--muted);font-size:.8rem}
+
+  @media(max-width:760px){
+    .phead{gap:20px}
+    .avatar{width:96px;height:96px}
+    .avatar .inner div{font-size:2.2rem}
+    .pinfo .u{font-size:1.25rem}
+    .stats{gap:22px;font-size:.85rem}
+    .menu-cols{grid-template-columns:1fr}
+    .info-grid{grid-template-columns:1fr}
+    .wifi .rows{grid-template-columns:1fr}
+    .tb-icons{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="dot">🥞</span><span>HOME CREPE</span></div>
+    <div class="tb-icons"><span>🔍</span><span>🤍</span><span>💬</span></div>
+  </div>
+</div>
+
+<!-- PROFILE -->
+<div class="wrap profile">
+  <div class="phead">
+    <div class="avatar"><div class="inner"><div>🥞</div></div></div>
+    <div class="pinfo">
+      <div class="row">
+        <div class="u">homecrepe<span style="font-size:.9rem;color:var(--muted)"> · food truck</span></div>
+        <button class="btn grad" type="button">Seguir</button>
+        <button class="btn light" type="button">Mensagem</button>
+      </div>
+      <div class="stats">
+        <div><b>128</b> posts</div>
+        <div><b>4.812</b> seguidores</div>
+        <div><b>320</b> seguindo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bio">
+    <div class="name">HOME CREPE 🥞 Food Truck</div>
+    <div class="cat">Crepe & Bancake · Feito na hora, do coração ❤️</div>
+    <div>Doces, salgados e bebidas geladinhas 🥤</div>
+    <div>📍 Ribeirão Preto · SP — siga pra ver onde a gente está hoje</div>
+    <div class="tags">📶 Wi-Fi liberado: <b>HOME CREPE</b> &nbsp;·&nbsp; ✨#HomeCrepe</div>
+    <div style="margin-top:8px"><a class="link" href="#cardapio">🔗 Ver cardápio completo</a></div>
+  </div>
+
+  <!-- HIGHLIGHTS -->
+  <div class="highlights">
+    <div class="hl"><div class="ring"><div class="in"><div>📋</div></div></div><span>Menu</span></div>
+    <div class="hl"><div class="ring"><div class="in"><div>🍫</div></div></div><span>Doces</span></div>
+    <div class="hl"><div class="ring"><div class="in"><div>🧀</div></div></div><span>Salgados</span></div>
+    <div class="hl"><div class="ring"><div class="in"><div>🥤</div></div></div><span>Bebidas</span></div>
+    <div class="hl"><div class="ring"><div class="in"><div>📍</div></div></div><span>Onde estamos</span></div>
+    <div class="hl"><div class="ring"><div class="in"><div>📶</div></div></div><span>Wi-Fi</span></div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="wrap" style="padding:0 16px">
+  <div class="tabs">
+    <div class="tab on">▦ Posts</div>
+    <div class="tab">▶ Reels</div>
+    <div class="tab">👤 Marcados</div>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="wrap" style="padding:0 16px">
+  <div class="grid">
+    <a href="#video"><img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=500&q=75" alt="crepe"><span class="ov">▶</span></a>
+    <a href="#cardapio"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=75" alt="crepe doce"></a>
+    <a href="#cardapio"><img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=500&q=75" alt="crepe"></a>
+    <a href="#cardapio"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500&q=75" alt="sobremesa"></a>
+    <a href="#cardapio"><img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=500&q=75" alt="cafe"></a>
+    <a href="#cardapio"><img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=500&q=75" alt="crepe"></a>
+    <a href="#cardapio"><img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=500&q=75" alt="crepe"></a>
+    <a href="#cardapio"><img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=500&q=75" alt="crepe"></a>
+    <a href="#cardapio"><img src="https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=500&q=75" alt="crepe"></a>
+  </div>
+</div>
+
+<!-- WIFI -->
+<section class="sec">
+  <div class="wifi">
+    <div class="in">
+      <div class="ic">📶</div>
+      <h3>Wi-Fi liberado — conecte-se!</h3>
+      <div class="rows">
+        <div class="box"><small>Rede (Wi-Fi)</small><b>HOME CREPE</b></div>
+        <div class="box"><small>Senha</small><b>experimente1#</b></div>
+      </div>
+      <div class="free">Enquanto isso, escolha seu crepe e aproveite o nosso espaço 🥞</div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="sec" id="cardapio">
+  <div class="sec-h">
+    <h2>Cardápio 🥞</h2>
+    <p>Tudo feito na hora, na chapa. <em>Valores de referência.</em></p>
+  </div>
+  <div class="menu-cols">
+    <div class="menu-col">
+      <h4>Doces</h4>
+      <div class="item"><div><b>Crepe de Nutella</b><i>com morango fresco</i></div><div class="p">R$ 22<small>a partir</small></div></div>
+      <div class="item"><div><b>Crepe de Banana</b><i>chocolate e canela</i></div><div class="p">R$ 18<small>a partir</small></div></div>
+      <div class="item"><div><b>Crepe de Doce de Leite</b><i>com coco</i></div><div class="p">R$ 18<small>a partir</small></div></div>
+      <div class="item"><div><b>Bancake</b><i>nossa especialidade</i></div><div class="p">R$ 20<small>a partir</small></div></div>
+    </div>
+    <div class="menu-col">
+      <h4>Salgados</h4>
+      <div class="item"><div><b>Crepe de Frango</b><i>com catupiry</i></div><div class="p">R$ 24<small>a partir</small></div></div>
+      <div class="item"><div><b>Crepe de Carne Seca</b><i>com queijo coalho</i></div><div class="p">R$ 26<small>a partir</small></div></div>
+      <div class="item"><div><b>Crepe de Queijo e Presunto</b><i>o clássico</i></div><div class="p">R$ 20<small>a partir</small></div></div>
+      <div class="item"><div><b>Crepe de 4 Queijos</b><i>bem cremoso</i></div><div class="p">R$ 25<small>a partir</small></div></div>
+    </div>
+    <div class="menu-col">
+      <h4>Bebidas</h4>
+      <div class="item"><div><b>Refrigerante</b><i>lata gelada</i></div><div class="p">R$ 6</div></div>
+      <div class="item"><div><b>Suco Natural</b><i>laranja / limão</i></div><div class="p">R$ 8</div></div>
+      <div class="item"><div><b>Água</b><i>com / sem gás</i></div><div class="p">R$ 4</div></div>
+      <div class="item"><div><b>Café</b><i>expresso</i></div><div class="p">R$ 6</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="sec" id="video">
+  <div class="sec-h">
+    <h2>Direto do Instagram 🎬</h2>
+    <p>O último vídeo do truck — som ligado! 🎶</p>
+  </div>
+  <figure class="video-box" id="ig-embed">
+    <!-- ▸ PARA PÔR O VÍDEO: cole o link do Reel em https://www.instagram.com/homecrepe/ e descomente o <blockquote> abaixo (pode apagar a div .ph-video) -->
+    <div class="ph-video">
+      <div class="ph-ic">▶</div>
+      <p>O vídeo do truck (com som 🎶) entra aqui assim que ligarmos o perfil</p>
+      <a class="btn grad" href="https://www.instagram.com/homecrepe/" target="_blank">Ver no Instagram</a>
+    </div>
+    <!--
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/homecrepe/" data-instgrm-version="14"
+      style="background:#fff;border:0;margin:0;width:100%"></blockquote>
+    -->
+    <figcaption>@HOME CREPE · toque para abrir no Instagram</figcaption>
+  </figure>
+</section>
+
+<!-- QR -->
+<section class="sec">
+  <div class="sec-h"><h2>Siga no Instagram 📸</h2><p>Aponte a câmera do celular pro QR code</p></div>
+  <div class="qr-card">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAAC4klEQVR4nO1bXW7bMAwmaQN9lIEeYEdxbrAj9Uy7gXWUHKCA/RjABgdSUlp7mewAayot/B7sWPweCLIUf6Qiwz3wdBcdwPh50I58C+PnQTvyLYyfB+3ItzB+HrQj38L4z2AfjGgBvLxPU/qE8EvWHqjPcdAd3Gfkt+HVD/KcXgF7Kbh818wYGc2sLyxTfzL+IftMKUJ9tyCe3AzQ8yWsxUhe8Y+CjF+gffpxQfBdMfr8HZSR3cKz83mYXmSHbpiHqQUevlmfPdAu47n5bXw7ceqkoduhzjwQ3AjY/wLggvUn4x+xj9cSuQPAEzSMp6kF6M/q/CWUz2v+YZDxC4hfvilzcwrsx+lDxv+n9gEWQK+vsYmpl3kGHpw8NBMnHg9m/zyoMD5Ev4WGiNeuBZGKYDT/Vl5fTTqrep0R3LvMMiT/sk41NKa5VP3J+Ifs41IQC3hwHDzKg7usOmGzZx5U5v7MugOPsqBbszxYPq9bc9i9Lf9Wer7QSVek8Tu9ML6NugYCEcBi/VHl8413lPzLGE4awtoo7l6QPWoSfoQ+ZPyvsE9/lqmkuyAPk84ypEka40lDCGc7H6w6fmfQMMV+0FBdWvY/R9ZtmX3XpAq6NP3J+HmwFk86qwoVlFbSa06vlZbVVxX7F7R+ljQr/tWphiDOr6RdMv9W7N/+OrWKTk79kSIOtqw/qvj+xgvjmxRZcn+D+dwC4o8Y2J9udxSr/1HQk843ErR0DlONQX+F7JzENt+osn7G+NXMLJfsZH9uZRKtPfEs0+m5UP3J+If6XxaEhLtIE9x+GleCZOc1/zDI+GXkX0wZNowr00DDy9UNOV+w/Pt//D37LjW8HuV+nR436Onh9+izA9ojPDm/vb3s5jbceZdLWKh79mP0IeN/iX3cdWq1upUDEs76aftz7fMrCK3Rx+jKxZlHupNl/VF9/kX7/+6q/EXGz4Ly4j9g/DxoR76F8fOgHfkWxs+jdvv8BopQkplyG4VoAAAAAElFTkSuQmCC" alt="QR code do Instagram HOME CREPE">
+    <div class="qr-txt">
+      <h3>HOME CREPE no Instagram</h3>
+      <div class="handle">@homecrepe</div>
+      <p>Novidades, promoções e onde o truck está hoje.</p>
+      <a class="btn grad" href="https://www.instagram.com/homecrepe/" target="_blank" style="margin-top:10px">Abrir Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="sec">
+  <div class="info-grid">
+    <div class="info"><span class="ic">📍</span><div><b>Onde encontrar</b><p>Ribeirão Preto · SP — siga o Instagram pra ver o ponto do dia.</p></div></div>
+    <div class="info"><span class="ic">🕒</span><div><b>Horário</b><p>Terça a domingo, à partir das 18h (confirme no Instagram).</p></div></div>
+    <div class="info"><span class="ic">📶</span><div><b>Wi-Fi grátis</b><p>Rede <b>HOME CREPE</b> · senha <b>experimente1#</b></p></div></div>
+    <div class="info"><span class="ic">🎉</span><div><b>Eventos & festas</b><p>Levamos o truck pro seu evento. Fale com a gente!</p></div></div>
+  </div>
+</section>
+
+<div class="cta">
+  <a class="btn grad" href="https://www.instagram.com/homecrepe/" target="_blank">Seguir @homecrepe no Instagram</a>
+</div>
+
+<footer>
+  HOME CREPE · Food Truck de Crepe & Bancake — Ribeirão Preto/SP · Feito na hora, do coração ♥
+</footer>
+
+<script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>
